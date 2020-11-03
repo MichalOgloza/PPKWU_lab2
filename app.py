@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "Hello World"
+    return "This API counts characters of various types in string. Available at address: /count/[textArgument]"
 
 
 if __name__ == '__main__':
