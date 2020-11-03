@@ -1,4 +1,6 @@
-from flask import Flask
+from flask import Flask, jsonify
+
+from StringInfo import StringInfo
 
 app = Flask(__name__)
 
@@ -14,8 +16,8 @@ def count(text):
     lower_count = sum(1 for c in text if c.islower())
     digit_count = sum(1 for c in text if c.isdigit())
     special_count = sum(1 for c in text if not (c.isalpha() or c.isdigit()))
-    return "upper_count: {0} <br/> lower_count: {1} <br/> digit_count: {2} <br/> special_count: {3}"\
-        .format(upper_count, lower_count, digit_count, special_count)
+    response = StringInfo(upper_count, lower_count, digit_count, special_count)
+    return jsonify(response.__dict__)
 
 
 if __name__ == '__main__':
